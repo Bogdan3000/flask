@@ -13,16 +13,6 @@
             margin: 20px;
         }
 
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-
-        .search-bar {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
         .user-list {
             display: flex;
             flex-wrap: wrap;
@@ -71,21 +61,6 @@
     </style>
 </head>
 <body>
-
-<h1>User List</h1>
-
-<div class="search-bar">
-    <form action="{{ url_for('process_form') }}" method="post" id="search-form">
-        <label for="search">Search:</label>
-        <input type="text" id="search" name="search" placeholder="Enter VK ID, Discord, or Minecraft">
-
-        <!-- Добавлено скрытое поле menu_option -->
-        <input type="hidden" name="menu_option" value="list">
-
-    </form>
-</div>
-
-
 <div class="user-list">
     {% for user in user_list %}
         <div class="user-container">
@@ -100,26 +75,6 @@
         </div>
     {% endfor %}
 </div>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $(document).on('input', '#search', function () {
-            // Получение данных из формы
-            var formData = $('#search-form').serialize();
-
-            // AJAX-запрос
-            $.ajax({
-                type: 'POST',
-                url: '{{ url_for("process_form_2") }}',
-                data: formData,
-                success: function(response) {
-                    // Заменяем содержимое блока с результатами
-                    $('.user-list').html(response);
-                }
-            });
-        });
-    });
-</script>
 
 </body>
 </html>
