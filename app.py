@@ -4,10 +4,26 @@ try:
 except ImportError:
     subprocess.check_call(['pip', 'install', 'flask'])
     import flask
+try:
+    import requests
+except ImportError:
+    subprocess.check_call(['pip', 'install', 'requests'])
+    import requests
+try:
+    import json
+except ImportError:
+    subprocess.check_call(['pip', 'install', 'json'])
+    import json
+try:
+    import functools
+except ImportError:
+    subprocess.check_call(['pip', 'install', 'functools'])
+    import functools
 import json
 from flask import Flask, render_template, request
 import requests
 from functools import lru_cache
+
 
 app = Flask(__name__)
 
