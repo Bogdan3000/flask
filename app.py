@@ -1,3 +1,9 @@
+import subprocess
+try:
+    import flask
+except ImportError:
+    subprocess.check_call(['pip', 'install', 'flask'])
+    import flask
 import json
 from flask import Flask, render_template, request
 import requests
